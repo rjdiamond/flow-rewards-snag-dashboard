@@ -36,8 +36,8 @@ const DailyTxAndWalletsChart: React.FC = () => {
           const workbook = XLSX.read(arrayBuffer, { type: 'array' });
           // Log all sheet names for debugging
           console.log('Available sheet names:', workbook.SheetNames);
-          const sheet = workbook.Sheets['Daily Summary'];
-          if (!sheet) throw new Error('Sheet "Daily Summary" not found');
+          const sheet = workbook.Sheets['Sheet1'];
+          if (!sheet) throw new Error('Sheet "Sheet1" not found');
           // Preview first few rows of the sheet
           const previewJson = XLSX.utils.sheet_to_json(sheet, { header: 1, range: 0 });
           console.log('Preview of sheet data:', previewJson.slice(0, 5));
