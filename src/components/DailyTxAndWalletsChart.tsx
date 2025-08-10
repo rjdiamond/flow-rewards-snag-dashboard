@@ -173,7 +173,7 @@ const DailyTxAndWalletsChart: React.FC = () => {
           <span style={{ fontWeight: 800, fontSize: 50, color: '#509EE3', lineHeight: 1, letterSpacing: '-2px', marginBottom: 8 }}>
             {txData?.datasets?.[0]?.data?.reduce((a: number, b: number) => a + b, 0).toLocaleString()}
           </span>
-            <span style={{ fontWeight: 500, fontSize: 10, color: '#3a3a3aff', marginBottom: 2 }}>04-16-2025 - 08-10-2025</span>
+            <span style={{ fontWeight: 500, fontSize: 10, color: '#3a3a3aff', marginBottom: 2 }}>(04-16-2025 - 08-10-2025)</span>
         </div>
       </div>
       {/* Chart box below big numbers */}

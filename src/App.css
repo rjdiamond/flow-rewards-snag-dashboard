@@ -1,5 +1,4 @@
-/* --- Begin App.css styles --- */
-/* --- End App.css styles --- */
+/* Mobile */
 
 @media (max-width: 900px) {
   .big-numbers-row {
@@ -22,6 +21,8 @@
 * {
   box-sizing: border-box;
 }
+
+/* Mobile */
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
