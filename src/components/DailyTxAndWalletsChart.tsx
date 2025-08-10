@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as XLSX from 'xlsx';
+// import * as XLSX from 'xlsx';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -26,41 +26,23 @@ const DailyTxAndWalletsChart: React.FC = () => {
   // ...existing code...
 
   useEffect(() => {
-  fetch(import.meta.env.BASE_URL + 'wallet_summary.xlsx')
+    fetch(import.meta.env.BASE_URL + 'wallet_summary.json')
       .then(response => {
-        if (!response.ok) throw new Error('Failed to load XLSX');
-        return response.arrayBuffer();
+        if (!response.ok) throw new Error('Failed to load JSON');
+        return response.json();
       })
-      .then(arrayBuffer => {
+      .then(data => {
         try {
-          const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-          // Log all sheet names for debugging
-          console.log('Available sheet names:', workbook.SheetNames);
-          const sheet = workbook.Sheets['Sheet1'];
-          if (!sheet) throw new Error('Sheet "Sheet1" not found');
-          // Preview first few rows of the sheet
-          const previewJson = XLSX.utils.sheet_to_json(sheet, { header: 1, range: 0 });
-          console.log('Preview of sheet data:', previewJson.slice(0, 5));
-          const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-          // Find header row
-          const headerRow = json.find(row => Array.isArray(row) && (row as string[]).includes('Date')) as string[] | undefined;
-          if (!headerRow) throw new Error('Header row not found');
-          const dateIdx = headerRow.indexOf('Date');
-          const walletsIdx = headerRow.indexOf('Unique Wallets Per Day');
-          const txsIdx = headerRow.indexOf('Transaction Count Per Day');
-          if (dateIdx === -1 || walletsIdx === -1 || txsIdx === -1) throw new Error('Required columns not found');
-          // Extract data rows
-          const dataRows = json.filter(row => Array.isArray(row) && typeof (row as any[])[dateIdx] === 'string' && row !== headerRow) as any[][];
+          // Daily Summary
+          const daily = data['Daily Summary'] || [];
           const daysArr: string[] = [];
           const walletsArr: number[] = [];
           const txsArr: number[] = [];
-          dataRows.forEach(row => {
-            daysArr.push(row[dateIdx]);
-            walletsArr.push(Number(row[walletsIdx]) || 0);
-            txsArr.push(Number(row[txsIdx]) || 0);
+          daily.forEach((row: any) => {
+            daysArr.push(row['Date']);
+            walletsArr.push(Number(row['Unique Wallets Per Day']) || 0);
+            txsArr.push(Number(row['Transaction Count Per Day']) || 0);
           });
-          // Removed erroneous setDays call
-          // Removed unused state setters
           setTxData({
             labels: daysArr,
             datasets: [
@@ -88,71 +70,53 @@ const DailyTxAndWalletsChart: React.FC = () => {
             ],
           });
           // Weekly Unique Wallets
-          const weekSheet = workbook.Sheets['Weekly Unique Wallets'];
-          if (weekSheet) {
-            const weekJson = XLSX.utils.sheet_to_json(weekSheet, { header: 1 });
-            const weekHeader = weekJson.find(row => Array.isArray(row) && (row as string[]).includes('Week')) as string[] | undefined;
-            if (weekHeader) {
-              const weekIdx = weekHeader.indexOf('Week');
-              const walletsIdx = weekHeader.indexOf('Unique Wallets Per Week');
-              const weekRows = weekJson.filter(row => Array.isArray(row) && typeof (row as any[])[weekIdx] === 'string' && row !== weekHeader) as any[][];
-              const weekArr: string[] = [];
-              const weekWalletsArr: number[] = [];
-              weekRows.forEach(row => {
-                weekArr.push(row[weekIdx]);
-                weekWalletsArr.push(Number(row[walletsIdx]) || 0);
-              });
-              setWeekWalletData({
-                labels: weekArr,
-                datasets: [
-                  {
-                    label: 'Unique Wallets Per Week',
-                    data: weekWalletsArr,
-                    borderColor: '#7D5FFF',
-                    backgroundColor: 'rgba(125, 95, 255, 0.2)',
-                    fill: true,
-                    tension: 0.3,
-                  },
-                ],
-              });
-            }
-          }
+          const weekly = data['Weekly Unique Wallets'] || [];
+          const weekArr: string[] = [];
+          const weekWalletsArr: number[] = [];
+          weekly.forEach((row: any) => {
+            weekArr.push(row['Week']);
+            weekWalletsArr.push(Number(row['Unique Wallets Per Week']) || 0);
+          });
+          setWeekWalletData({
+            labels: weekArr,
+            datasets: [
+              {
+                label: 'Unique Wallets Per Week',
+                data: weekWalletsArr,
+                borderColor: '#7D5FFF',
+                backgroundColor: 'rgba(125, 95, 255, 0.2)',
+                fill: true,
+                tension: 0.3,
+              },
+            ],
+          });
           // Monthly Unique Wallets
-          const monthSheet = workbook.Sheets['Monthly Unique Wallets'];
-          if (monthSheet) {
-            const monthJson = XLSX.utils.sheet_to_json(monthSheet, { header: 1 });
-            const monthHeader = monthJson.find(row => Array.isArray(row) && (row as string[]).includes('Month')) as string[] | undefined;
-            if (monthHeader) {
-              const monthIdx = monthHeader.indexOf('Month');
-              const walletsIdx = monthHeader.indexOf('Unique Wallets Per Month');
-              const monthRows = monthJson.filter(row => Array.isArray(row) && typeof (row as any[])[monthIdx] === 'string' && row !== monthHeader) as any[][];
-              const monthArr: string[] = [];
-              const monthWalletsArr: number[] = [];
-              monthRows.forEach(row => {
-                monthArr.push(row[monthIdx]);
-                monthWalletsArr.push(Number(row[walletsIdx]) || 0);
-              });
-              setMonthWalletData({
-                labels: monthArr,
-                datasets: [
-                  {
-                    label: 'Unique Wallets Per Month',
-                    data: monthWalletsArr,
-                    borderColor: '#00C896',
-                    backgroundColor: 'rgba(0, 200, 150, 0.2)',
-                    fill: true,
-                    tension: 0.3,
-                  },
-                ],
-              });
-            }
-          }
+          const monthly = data['Monthly Unique Wallets'] || [];
+          const monthArr: string[] = [];
+          const monthWalletsArr: number[] = [];
+          monthly.forEach((row: any) => {
+            monthArr.push(row['Month']);
+            monthWalletsArr.push(Number(row['Unique Wallets Per Month']) || 0);
+          });
+          setMonthWalletData({
+            labels: monthArr,
+            datasets: [
+              {
+                label: 'Unique Wallets Per Month',
+                data: monthWalletsArr,
+                borderColor: '#00C896',
+                backgroundColor: 'rgba(0, 200, 150, 0.2)',
+                fill: true,
+                tension: 0.3,
+              },
+            ],
+          });
           setError(null);
         } catch (err: any) {
-          setError('Error parsing XLSX: ' + err.message);
+          setError('Error parsing JSON: ' + err.message);
         }
       })
-  .catch(() => setError('Could not load XLSX from ' + import.meta.env.BASE_URL + 'wallet_summary.xlsx'));
+      .catch(() => setError('Could not load JSON from ' + import.meta.env.BASE_URL + 'wallet_summary.json'));
   }, []);
 
   // No wallet grouping needed for XLSX version
