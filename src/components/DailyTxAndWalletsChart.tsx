@@ -124,15 +124,19 @@ const DailyTxAndWalletsChart: React.FC = () => {
   return (
     <>
       {/* Big numbers row, outside chart box */}
-      <div style={{
-        width: 1600,
-        display: 'flex',
-        gap: '2rem',
-        margin: '2rem auto 0 auto',
-        justifyContent: 'flex-start',
-        alignItems: 'stretch',
-        maxWidth: '100%',
-      }}>
+      <div
+        style={{
+          width: '100%',
+          maxWidth: 1600,
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '2rem',
+          margin: '2rem auto 0 auto',
+          justifyContent: 'flex-start',
+          alignItems: 'stretch',
+        }}
+        className="big-numbers-row"
+      >
         {/* Unique Wallets Per Day big number card for all data */}
         <div style={{
           flex: 1,
@@ -174,26 +178,29 @@ const DailyTxAndWalletsChart: React.FC = () => {
       </div>
       {/* Chart box below big numbers */}
       {/* Transaction Count Per Day chart in its own box above all wallet charts */}
-      <div style={{
-        width: 1600,
-        minHeight: 400,
-        margin: '2rem auto',
-        padding: '2rem',
-        background: '#fff',
-        borderRadius: 16,
-        boxShadow: '0 1px 3px #509EE3',
-        border: '2px solid #509EE3',
-        fontFamily: 'Lato, Arial, sans-serif',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-        gap: '2rem',
-        overflow: 'hidden',
-        position: 'relative',
-        maxWidth: '100%',
-        boxSizing: 'border-box',
-      }}>
+      <div
+        style={{
+          width: '100%',
+          maxWidth: 1600,
+          minHeight: 400,
+          margin: '2rem auto',
+          padding: '2rem',
+          background: '#fff',
+          borderRadius: 16,
+          boxShadow: '0 1px 3px #509EE3',
+          border: '2px solid #509EE3',
+          fontFamily: 'Lato, Arial, sans-serif',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-start',
+          gap: '2rem',
+          overflow: 'hidden',
+          position: 'relative',
+          boxSizing: 'border-box',
+        }}
+        className="chart-box"
+      >
         <h2 style={{ fontWeight: 700, fontSize: 22, color: '#213547', marginBottom: '0.5rem' }}>Transactions Per Day</h2>
         {error && <div style={{ color: 'red', marginTop: 10 }}>{error}</div>}
         <div style={{ width: '100%' }}>
@@ -243,26 +250,29 @@ const DailyTxAndWalletsChart: React.FC = () => {
         </div>
       </div>
       {/* Wallet charts below */}
-      <div style={{
-        width: 1600,
-        minHeight: 400,
-        margin: '2rem auto',
-        padding: '2rem',
-        background: '#fff',
-        borderRadius: 16,
-        boxShadow: '0 1px 3px #509EE3',
-        border: '2px solid #509EE3',
-        fontFamily: 'Lato, Arial, sans-serif',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-        gap: '2rem',
-        overflow: 'hidden',
-        position: 'relative',
-        maxWidth: '100%',
-        boxSizing: 'border-box',
-      }}>
+      <div
+        style={{
+          width: '100%',
+          maxWidth: 1600,
+          minHeight: 400,
+          margin: '2rem auto',
+          padding: '2rem',
+          background: '#fff',
+          borderRadius: 16,
+          boxShadow: '0 1px 3px #509EE3',
+          border: '2px solid #509EE3',
+          fontFamily: 'Lato, Arial, sans-serif',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-start',
+          gap: '2rem',
+          overflow: 'hidden',
+          position: 'relative',
+          boxSizing: 'border-box',
+        }}
+        className="chart-box"
+      >
         <h2 style={{ fontWeight: 700, fontSize: 22, color: '#213547', marginBottom: '0.5rem' }}>Daily Unique Wallets</h2>
         {/* Unique Wallets Per Day chart */}
         <div style={{ width: '100%', marginBottom: '2rem' }}>

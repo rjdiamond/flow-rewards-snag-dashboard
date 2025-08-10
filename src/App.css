@@ -1,5 +1,24 @@
 /* --- Begin App.css styles --- */
 /* --- End App.css styles --- */
+
+@media (max-width: 900px) {
+  .big-numbers-row {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  .chart-box {
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    margin: 1rem auto !important;
+    padding: 1rem !important;
+  }
+  h1 {
+    font-size: 2rem !important;
+    padding: 0 0.5rem;
+  }
+}
 * {
   box-sizing: border-box;
 }
