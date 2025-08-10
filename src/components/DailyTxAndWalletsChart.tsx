@@ -26,7 +26,7 @@ const DailyTxAndWalletsChart: React.FC = () => {
   // ...existing code...
 
   useEffect(() => {
-  fetch('/wallet_summary.xlsx')
+  fetch(import.meta.env.BASE_URL + 'wallet_summary.xlsx')
       .then(response => {
         if (!response.ok) throw new Error('Failed to load XLSX');
         return response.arrayBuffer();
@@ -147,7 +147,7 @@ const DailyTxAndWalletsChart: React.FC = () => {
           setError('Error parsing XLSX: ' + err.message);
         }
       })
-      .catch(() => setError('Could not load XLSX from /wallet_summary.xlsx'));
+  .catch(() => setError('Could not load XLSX from ' + import.meta.env.BASE_URL + 'wallet_summary.xlsx'));
   }, []);
 
   // No wallet grouping needed for XLSX version
