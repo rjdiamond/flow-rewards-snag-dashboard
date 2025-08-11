@@ -137,32 +137,16 @@ const DailyTxAndWalletsChart: React.FC = () => {
         }}
         className="big-numbers-row"
       >
-        {/* Unique Wallets Per Day big number card for all data */}
-        <div style={{
-          flex: 1,
-          background: '#fff',
-          borderRadius: 16,
-          boxShadow: '0 1px 3px #F2A86F',
-          border: '2px solid #F2A86F',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '1.5rem 0',
-        }}>
-          <span style={{ fontWeight: 700, fontSize: 15, color: '#3a3a3aff', marginBottom: 4 }}>Unique Wallets (Overtime)</span>
-          <span style={{ fontWeight: 800, fontSize: 50, color: '#F2A86F', lineHeight: 1, letterSpacing: '-2px', marginBottom: 8 }}>
-            {walletData?.datasets?.[0]?.data?.reduce((a: number, b: number) => a + b, 0).toLocaleString()}
-          </span>
-            <span style={{ fontWeight: 500, fontSize: 10, color: '#3a3a3aff', marginBottom: 2 }}>(04-16-2025 - 08-10-2025)</span>
-        </div>
+
+
         {/* Transaction Count Per Day big number card for all data */}
+
         <div style={{
           flex: 1,
           background: '#fff',
           borderRadius: 16,
           boxShadow: '0 1px 3px #509EE3',
-          border: '2px solid #509EE3',
+          border: '3px solid #509EE3',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -172,6 +156,27 @@ const DailyTxAndWalletsChart: React.FC = () => {
           <span style={{ fontWeight: 700, fontSize: 15, color: '#3a3a3aff', marginBottom: 4 }}>Transaction Count (Overtime)</span>
           <span style={{ fontWeight: 800, fontSize: 50, color: '#509EE3', lineHeight: 1, letterSpacing: '-2px', marginBottom: 8 }}>
             {txData?.datasets?.[0]?.data?.reduce((a: number, b: number) => a + b, 0).toLocaleString()}
+          </span>
+            <span style={{ fontWeight: 500, fontSize: 10, color: '#3a3a3aff', marginBottom: 2 }}>(04-16-2025 - 08-10-2025)</span>
+        </div>
+
+        {/* Unique Wallets Per Day big number card for all data */}
+
+        <div style={{
+          flex: 1,
+          background: '#fff',
+          borderRadius: 16,
+          boxShadow: '0 1px 3px #F2A86F',
+          border: '3px solid #F2A86F',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '1.5rem 0',
+        }}>
+          <span style={{ fontWeight: 700, fontSize: 15, color: '#3a3a3aff', marginBottom: 4 }}>Unique Wallets (Overtime)</span>
+          <span style={{ fontWeight: 800, fontSize: 50, color: '#F2A86F', lineHeight: 1, letterSpacing: '-2px', marginBottom: 8 }}>
+            {walletData?.datasets?.[0]?.data?.reduce((a: number, b: number) => a + b, 0).toLocaleString()}
           </span>
             <span style={{ fontWeight: 500, fontSize: 10, color: '#3a3a3aff', marginBottom: 2 }}>(04-16-2025 - 08-10-2025)</span>
         </div>
@@ -188,7 +193,7 @@ const DailyTxAndWalletsChart: React.FC = () => {
           background: '#fff',
           borderRadius: 16,
           boxShadow: '0 1px 3px #509EE3',
-          border: '2px solid #509EE3',
+          border: '3px solid #509EE3',
           fontFamily: 'Lato, Arial, sans-serif',
           display: 'flex',
           flexDirection: 'column',
@@ -239,8 +244,8 @@ const DailyTxAndWalletsChart: React.FC = () => {
                     },
                   },
                   elements: {
-                    line: { borderWidth: 3, borderJoinStyle: 'round', borderColor: '#509EE3' },
-                    point: { radius: 4, backgroundColor: '#509EE3', borderColor: '#fff', borderWidth: 2 },
+                    line: { borderWidth: 2, borderJoinStyle: 'round', borderColor: '#509EE3' },
+                    point: { radius: 2, backgroundColor: '#509EE3', borderColor: '#fff', borderWidth: 2 },
                   },
                 }}
                 style={{ width: '100%', height: '100%' }}
@@ -259,8 +264,8 @@ const DailyTxAndWalletsChart: React.FC = () => {
           padding: '2rem',
           background: '#fff',
           borderRadius: 16,
-          boxShadow: '0 1px 3px #509EE3',
-          border: '2px solid #509EE3',
+          boxShadow: '0 1px 3px #F2A86F',
+          border: '3px solid #F2A86F',
           fontFamily: 'Lato, Arial, sans-serif',
           display: 'flex',
           flexDirection: 'column',
@@ -311,8 +316,8 @@ const DailyTxAndWalletsChart: React.FC = () => {
                     },
                   },
                   elements: {
-                    line: { borderWidth: 3, borderJoinStyle: 'round', borderColor: '#F2A86F' },
-                    point: { radius: 4, backgroundColor: '#F2A86F', borderColor: '#fff', borderWidth: 2 },
+                    line: { borderWidth: 2, borderJoinStyle: 'round', borderColor: '#f29f6fff' },
+                    point: { radius: 2, backgroundColor: '#e9f26fff', borderColor: '#fff', borderWidth: 2 },
                   },
                 }}
                 style={{ width: '100%', height: '100%' }}
@@ -358,8 +363,8 @@ const DailyTxAndWalletsChart: React.FC = () => {
                     },
                   },
                   elements: {
-                    line: { borderWidth: 3, borderJoinStyle: 'round', borderColor: '#7D5FFF' },
-                    point: { radius: 4, backgroundColor: '#7D5FFF', borderColor: '#fff', borderWidth: 2 },
+                    line: { borderWidth: 2, borderJoinStyle: 'round', borderColor: '#7D5FFF' },
+                    point: { radius: 2, backgroundColor: '#7D5FFF', borderColor: '#fff', borderWidth: 2 },
                   },
                 }}
                 style={{ width: '100%', height: '100%' }}
@@ -405,8 +410,8 @@ const DailyTxAndWalletsChart: React.FC = () => {
                     },
                   },
                   elements: {
-                    line: { borderWidth: 3, borderJoinStyle: 'round', borderColor: '#00C896' },
-                    point: { radius: 4, backgroundColor: '#00C896', borderColor: '#fff', borderWidth: 2 },
+                    line: { borderWidth: 2, borderJoinStyle: 'round', borderColor: '#00C896' },
+                    point: { radius: 2, backgroundColor: '#00C896', borderColor: '#fff', borderWidth: 2 },
                   },
                 }}
                 style={{ width: '100%', height: '100%' }}

@@ -564,6 +564,21 @@
       "Date": "2025-08-07",
       "Unique Wallets Per Day": "579",
       "Transaction Count Per Day": "1147"
+    },
+    {
+      "Date": "2025-08-08",
+      "Unique Wallets Per Day": "607",
+      "Transaction Count Per Day": "1539"
+    },
+    {
+      "Date": "2025-08-09",
+      "Unique Wallets Per Day": "577",
+      "Transaction Count Per Day": "2078"
+    },
+    {
+      "Date": "2025-08-10",
+      "Unique Wallets Per Day": "601",
+      "Transaction Count Per Day": "1832"
     }
   ],
   "Weekly Unique Wallets": [
@@ -633,7 +648,7 @@
     },
     {
       "Week": "2025-08-04/2025-08-10",
-      "Unique Wallets Per Week": "1196"
+      "Unique Wallets Per Week": "1321"
     }
   ],
   "Monthly Unique Wallets": [
@@ -655,7 +670,7 @@
     },
     {
       "Month": "2025-08",
-      "Unique Wallets Per Month": "1345"
+      "Unique Wallets Per Month": "1470"
     }
   ]
 }
