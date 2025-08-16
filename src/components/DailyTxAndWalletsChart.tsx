@@ -21,6 +21,8 @@ const DailyTxAndWalletsChart: React.FC = () => {
   const [walletData, setWalletData] = useState<any>(null);
   const [weekWalletData, setWeekWalletData] = useState<any>(null);
   const [monthWalletData, setMonthWalletData] = useState<any>(null);
+  const [walletsOvertime, setWalletsOvertime] = useState<number | null>(null);
+  const [txsOvertime, setTxsOvertime] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   // Removed unused days state
   // ...existing code...
@@ -33,6 +35,10 @@ const DailyTxAndWalletsChart: React.FC = () => {
       })
       .then(data => {
         try {
+          // Overtime big numbers
+          setWalletsOvertime(data['Unique Wallets Overtime'] ?? null);
+          setTxsOvertime(data['Transaction Count Overtime'] ?? null);
+
           // Daily Summary
           const daily = data['Daily Summary'] || [];
           const daysArr: string[] = [];
@@ -137,10 +143,7 @@ const DailyTxAndWalletsChart: React.FC = () => {
         }}
         className="big-numbers-row"
       >
-
-
-        {/* Transaction Count Per Day big number card for all data */}
-
+        {/* Transaction Count Overtime big number card */}
         <div style={{
           flex: 1,
           background: '#fff',
@@ -155,13 +158,11 @@ const DailyTxAndWalletsChart: React.FC = () => {
         }}>
           <span style={{ fontWeight: 700, fontSize: 15, color: '#3a3a3aff', marginBottom: 4 }}>Transaction Count (Overtime)</span>
           <span style={{ fontWeight: 800, fontSize: 50, color: '#509EE3', lineHeight: 1, letterSpacing: '-2px', marginBottom: 8 }}>
-            {txData?.datasets?.[0]?.data?.reduce((a: number, b: number) => a + b, 0).toLocaleString()}
+            {txsOvertime !== null ? txsOvertime.toLocaleString() : '--'}
           </span>
-            <span style={{ fontWeight: 500, fontSize: 10, color: '#3a3a3aff', marginBottom: 2 }}>(04-16-2025 - 08-10-2025)</span>
+          <span style={{ fontWeight: 500, fontSize: 10, color: '#3a3a3aff', marginBottom: 2 }}>(04-16-2025 - 08-10-2025)</span>
         </div>
-
-        {/* Unique Wallets Per Day big number card for all data */}
-
+        {/* Unique Wallets Overtime big number card */}
         <div style={{
           flex: 1,
           background: '#fff',
@@ -176,9 +177,9 @@ const DailyTxAndWalletsChart: React.FC = () => {
         }}>
           <span style={{ fontWeight: 700, fontSize: 15, color: '#3a3a3aff', marginBottom: 4 }}>Unique Wallets (Overtime)</span>
           <span style={{ fontWeight: 800, fontSize: 50, color: '#F2A86F', lineHeight: 1, letterSpacing: '-2px', marginBottom: 8 }}>
-            {walletData?.datasets?.[0]?.data?.reduce((a: number, b: number) => a + b, 0).toLocaleString()}
+            {walletsOvertime !== null ? walletsOvertime.toLocaleString() : '--'}
           </span>
-            <span style={{ fontWeight: 500, fontSize: 10, color: '#3a3a3aff', marginBottom: 2 }}>(04-16-2025 - 08-10-2025)</span>
+          <span style={{ fontWeight: 500, fontSize: 10, color: '#3a3a3aff', marginBottom: 2 }}>(04-16-2025 - 08-10-2025)</span>
         </div>
       </div>
       {/* Chart box below big numbers */}
