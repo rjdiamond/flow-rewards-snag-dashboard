@@ -568,22 +568,23 @@
     {
       "Date": "2025-08-08",
       "Unique Wallets Per Day": 607,
-      "Transaction Count Per Day": 1539
+      "Transaction Count Per Day": 3078
     },
     {
       "Date": "2025-08-09",
       "Unique Wallets Per Day": 577,
-      "Transaction Count Per Day": 2078
+      "Transaction Count Per Day": 4156
     },
     {
       "Date": "2025-08-10",
       "Unique Wallets Per Day": 601,
-      "Transaction Count Per Day": 1832
+      "Transaction Count Per Day": 3664
     },
     {
       "Date": "2025-08-11",
-      "Unique Wallets Per Day": 279,
-      "Transaction Count Per Day": 856
+      "Unique Wallets Per Day": 720,
+      "Transaction Count Per Day": 2986
+    },
     {
       "Date": "2025-08-12",
       "Unique Wallets Per Day": 718,
@@ -768,6 +769,11 @@
       "Date": "2025-09-17",
       "Unique Wallets Per Day": 905,
       "Transaction Count Per Day": 2207
+    },
+    {
+      "Date": "2025-09-18",
+      "Unique Wallets Per Day": 582,
+      "Transaction Count Per Day": 1260
     }
   ],
   "Weekly Unique Wallets": [
@@ -841,7 +847,7 @@
     },
     {
       "Week": "2025-08-11/2025-08-17",
-      "Unique Wallets Per Week": 279
+      "Unique Wallets Per Week": 1192
     },
     {
       "Week": "2025-08-18/2025-08-24",
@@ -890,6 +896,6 @@
       "Unique Wallets Per Month": 1858
     }
   ],
-  "Unique Wallets Overtime": 28534,
-  "Transaction Count Overtime": 279369
+  "Unique Wallets Overtime": 29616,
+  "Transaction Count Overtime": 356634
 }
